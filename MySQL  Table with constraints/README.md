@@ -130,4 +130,4 @@ The final output will be like image below 👇
 
 1. [w3resource](https://www.w3resource.com/index.php)
 2. [w3schools.com](https://www.w3schools.com/default.asp)
-3. [MySQLTUTORiAL] (https://www.mysqltutorial.org/what-is-mysql/)
+3. [MySQLTUTORiAL](https://www.mysqltutorial.org/what-is-mysql/)

@@ -21,7 +21,7 @@ You'll need a SQL editor installed in your system for this activity. **No prior 
 4. `SQuirreL SQL`
 5. `Oracle SQL Developer`
 
-And many more editors, you can check editors list from[here](https://www.geckoandfly.com/34197/free-sql-editor/). All these editors are free and user friendly.I'll be using `MySQL Workbench` for this module.
+And many more editors, you can check editors list from [here](https://www.geckoandfly.com/34197/free-sql-editor/). All these editors are free and user friendly.I'll be using `MySQL Workbench` for this module.
 
 ### Activity 2: Open MySQL Workbench 
 

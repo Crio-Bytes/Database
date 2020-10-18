@@ -32,12 +32,17 @@ By default you will be seeing a blank window,something like the image below 👇
 ### Activity 3: Create a Database 
 
 The next step is to create a Database in the MySQL Workbench,to create a Database use the "Query".
+
 Here word Query came, so you might be thinking what is Query?
+
 >So,a query is really a question or request for data.
 
 Use the following query to create Database:
-` CREATE DATABASE CRIO;`
-Here CRIO is a name of database, you can give any name and every query should end with semicolon(;)
+
+` CREATE DATABAS_NAME;`
+
+You have to give Database name, try giving CRIO as a Database name and remenber every query should end with semicolon(;)
+
 After writing the query just select the query and then click on execution button just like in image bellow 👇
 
 ![](Images/img2.png)
@@ -50,84 +55,95 @@ Congratulations!!🎉 you have successfully executed your first Query in SQL, so
 
 ### Activity 4: Use Database
 Now in this step we will use the Database that we just created.
-To use the Database use the following Query:
-`USE CRIO;`
-Here CRIO is a Database name.
 
-![](Images/img4.png)
+To use the Database use the following Query:
+
+`USE DatabaseName;`
+
+You have to enter the Database name that you have given while creating Database.
 
 ### Activity 5: Create a Table with constraints
 
 **So let us first understand what is constraints?**
--MySQL CONSTRAINT is used to define rules to allow or restrict what values can be stored in columns. The purpose of inducing constraints is to enforce the integrity of a database.
--MySQL CONSTRAINTS are used to limit the type of data that can be inserted into a table.
 
-[Reference](https://www.w3resource.com/mysql/creating-table-advance/constraint.php#:~:text=MySQL%20CONSTRAINT%20is%20used%20to,be%20inserted%20into%20a%20table.) 
+-MySQL CONSTRAINTS are used to limit the type of data that can be inserted into a table. 
 
-Now we will create a table using a Query:
-```
-create table customer(id int primary key , full_name varchar(10) not null, Age int,
-contact int not null Unique,address varchar(10) default"NA");
-```					   
-Here table name is customer,**you can give any name as a table name** and we have created a field named id, full_name, Age, contact and address. **You can create your own field.** 
-**Here you can see in a query above we have used constraints:
+Now we will create a table using a following SQL Statement:
+
+- Create Statement : 
+
+systax: 
+
+CREATE TABLE table_name (
+    column1 datatype,
+    column2 datatype,
+    column3 datatype,
+   ....
+);
+Now Try creating a table with the columns : id, full_name, Age, contact and address.
+
+Now we will add constraints to the Table:
+
+systax:
+
+CREATE TABLE table_name (
+    column1 datatype ContraintName,
+    column2 datatype ConstraintName,
+    column3 datatype ConstraintName,
+   ....
+);
+
+Try giving following constraints:
+
 - primary key
 - not null
 - Unique 
+- Default
 
-Let us discuss what are these constraints and what they do.
+Every constraints has its own properties and you can give more contraints to your table.
+You can learn more about constraints form [Here](https://www.w3resource.com/mysql/creating-table-advance/constraint.php#:~:text=MySQL%20CONSTRAINT%20is%20used%20to,be%20inserted%20into%20a%20table.) and create table using these constraints.
 
-Primary Key - A PRIMARY KEY constraint for a table enforces the table to accept unique data for a specific column and this constraint creates a unique index for accessing the table faster.
-
-Not Null - 	In MySQL NOT NULL constraint allows to specify that a column can not contain any NULL value. MySQL NOT NULL can be used to CREATE and ALTER a table.
-
-Unique - The UNIQUE constraint in MySQL does not allow to insert a duplicate value in a column. The UNIQUE constraint maintains the uniqueness of a column in a table. More than one UNIQUE column can be used in a table.
-
-Default - In a MySQL table, each column must contain a value ( including a NULL). While inserting data into a table, if no value is supplied to a column, then the column gets the value set as DEFAULT.
-
-Now execute the query.
+**Default constraint must be added in your Table and try to find out how it works**
 
 ### Activity 6: Describe the Table
 
 After executing the create table query we need to check how our table looks for that we need to use the keyword DESC which means Describe, it will show us the table that we created.
 
 Use following query:
-`DESC byte;
-Here byte is a table name.
-After executing this query table will look like this 👇
 
-![](Images/img5.png)
+`DESC table_name;
+
+Here give the tabe name that you have given while creating the table.
 
 Congratulations!!🎉 Our Table is created Successfully and now you can see table with the constraints. 
 
 ### Activity 7: Insert values into the Table
 
 Now we will insert values into the Table.
-To insert values into the Table we will use INSERT Query, it will insert values**NOTE**sql is not case sesitive language.
-Now write the following code:
-```
-insert into customer(id , full_name , Age, contact, address)
-values(1,"Nitesh",22,34434,"India");
-insert into customer(id , full_name , Age, contact)
-values(2,"RAM",11,334);
-select * from customer;
-```
-You can give any value in the table.
-**Notice** here that when we have inserted values second time, we have not given field address so when we will execute this query by default value will be printed in the table i.e NA, which we have while creating a table.
 
-Here one for thing you can see in above query is line `select * from customer`.The SELECT statement is used to select data from a database and `*` is use to select all.
-In short if we want to see the value that we have inserted into the table then we have to use this statement.
+To insert values into the Table we will use INSERT INTO Statement, it will insert values
 
-The final output will be like image below 👇  
+**NOTE**sql is not case sesitive language.
+
+syntax:
+
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+
+In above Query in column1, column2... add your column names that you have created
+
+If you have done everthing right then final output will come something like the image below 👇
+
  ![](Images/img6.png)
  
  Congratulations🎉 we have successfully created a Table with constraints.
  
  ## SUMMARY
+ 
  We have created a Table, Inserted values in Table, Used Constraints in Table. Now you can easily create Table using SQL queries.
  
  ## REFERENCES
-
+ 
 1. [w3resource](https://www.w3resource.com/index.php)
 2. [w3schools.com](https://www.w3schools.com/default.asp)
 3. [MySQLTUTORiAL](https://www.mysqltutorial.org/what-is-mysql/)

@@ -5,9 +5,9 @@ Doing this microbyte means that you are somewhat familiar with database and trad
     <summary>Curious cat:</summary>
 
     1. Does it mean that noSQL or non relational databases don't store relationship data well?
-    2. Well, what is optional schema? Till now we have only heard of fixed schema in RDBMS.
+    2. Well, what is optional schema?
 
-    You may give it a try to find answer to these questions. Anyway we will discuss it in later section.
+    You will get the answers as you proceed through. Just keep on relating the bits and pieces. 
 </details>
 
 ## Running MongoDB ##
@@ -69,3 +69,21 @@ With this you are all setup to use mongoDB as a database.
 ## MongoDB clients and drivers ##
 MongoDB clients are nothing but applications that are connected with the mongoDB database which manages data in the database. It can be any application like a java application, or a python application or even the mongo shell. However drivers are language specific libraries that are put forward by the developer community to help you easily connect your application to MongoDB database. MongoDB has a [number of official drivers](https://docs.mongodb.com/drivers/) for various languages.
 
+## Bits and bytes of MongoDB ##
+Before delving into working with MongoDB you need to know some basic mechanics of it. These are core to MongoDB and will also help you answer some high level questions like where MongoDB fits. They are summerised into following points.
+1. Within a MongoDB instance you can have zero or more databases, each serving as a high level container for storing data.
+2. A database can have zero or more collections. A collection has enough similarity with traditional tables that you can think of them as same thing.
+3. A collection can comprise of zero or more documents. Again documents can be safely thought of as a row in a table.
+4. A document is made up of one or more fields which can be safely compared to columns in a table.
+5. Collections can be indexed similar to RDBMS tables.
+6. Cursors: When you ask MongoDB for data it returns a pointer to the result set known as cursor.
+
+> The concepts discussed above (collections, documents and fields) are similar to their RDBMS counterparts but not identical. The key difference is that a relational database defines columns at the table level whereas MongoDB defines fields at document level. That is to say that each document in a collection can have its own unique set of fields.
+<details>
+    <summary>Curious cat: Does it mean that unlike a RDBMS a collection is not strict about what goes in it?</summary>
+
+    Yes it's absolutely correct, MongoDB is schema-less. Fields are individual to the documents and not the collection. 
+   
+</details> 
+
+Now let's have some fun by going hands on. If you do not have it already running go ahead and run the MongoDB server and also the mongo shell. 

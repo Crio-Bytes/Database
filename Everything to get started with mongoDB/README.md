@@ -22,27 +22,50 @@ What does it mean by running MongoDB? See MongoDB is a DBMS and DBMS is nothing 
 
 **Steps to run remotely**
 1. Head over to [this link](https://account.mongodb.com/account/login) and create your account with an email id and password.
+
 2. After creating your account you will see the below screen.
-![mongoDB1](images/mongoDB1.jpg)
+
+![mongoDB1](images/mongoDB1.JPG)
+
 You can leave them as default or skip it for now. However they are important when you are developing production level software for an enterprise.
+
 3. Next you will be prompted the screen below. Select **Create a cluster** with the FREE option.
-![mongoDB2](images/mongoDB2.jpg)
+
+![mongoDB2](images/mongoDB2.JPG)
+
 4. Subsequently select AWS as the cloud provider, region as Mumbai(ap-south-1) and cluster tier as M0 Sandbox. Select **Create Cluster**.
-![mongoDB3](images/mongoDB3.jpg)
+
+![mongoDB3](images/mongoDB3.JPG)
+
 5. You will be redirected to the clusters page. It takes around two minutes to create your cluster and deploy it.
-![mongoDB4](images/mongoDB4.jpg)
-6. Once your cluster is up and running you need to connect an end user to your cluster. So click on **Connect**.
-![mongoDB5](images/mongoDB5.jpg)
-Select **Allow Access from Anywhere** in the whitelisting section.
-![mongoDB6](images/mongoDB6.jpg)
+
+![mongoDB4](images/mongoDB4.JPG)
+
+6. Once your cluster is up and running you need to connect an end user to your cluster. So click on **Connect**. But before connecting you have to configure firewall settings and create an admin user. Select **Allow Access from Anywhere** in the whitelisting section.
+
+![mongoDB5](images/mongoDB5.JPG)
+![mongoDB6](images/mongoDB6.JPG)
+
 Create a database admin user by providing a username and password. You may provide any username and password.
-![mongoDB7](images/mongoDB7.jpg)
+
+![mongoDB7](images/mongoDB7.JPG)
+
 7. Once you are done with whitelisting and creating admin user you will be allowed to choose a connection method. Click on **Choose a connection method**.
-![mongoDB8](images/mongoDB8.jpg)
-Select **Connect with mongo shell**.
-![mongoDB9](images/mongoDB9.jpg)
+
+![mongoDB8](images/mongoDB8.JPG)
+
+Select **Connect with mongo shell**. 
+
+![mongoDB9](images/mongoDB9.JPG)
+
 If you do not have mongo shell installed in your system then select **I do not have mongo shell installed** and install mongo shell first, else you can select **I have the mongo shell installed** and select your mongo shell version. Copy the connection string provided to connect to your mongo cluster.
-![mongoDB10](images/mongoDB10.jpg)
+
+![mongoDB10](images/mongoDB10.JPG)
+
 8. In your command line terminal paste the string you copied in the previous step. This will run mongo shell and also connect it to your mongo cluster.
 
 With this you are all setup to use mongoDB as a database. 
+
+## MongoDB clients and drivers ##
+MongoDB clients are nothing but applications that are connected with the mongoDB database which manages data in the database. It can be any application like a java application, or a python application or even the mongo shell. However drivers are language specific libraries that are put forward by the developer community to help you easily connect your application to MongoDB database. MongoDB has a [number of official drivers](https://docs.mongodb.com/drivers/) for various languages.
+

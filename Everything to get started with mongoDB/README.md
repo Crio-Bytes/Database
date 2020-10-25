@@ -69,7 +69,7 @@ Congratulations...you successfuly created your first database in MongoDB. But wa
 Go ahead and run the command db.getCollectionNames(). If you do so you should get an empty array([]) because you haven't created any collection in the database yet. [Do you remember what a collection resembles to in a RDBMS?]
 Since a collection in MongoDB has no definite schema, you don't need to explicitely create a collection. You can simply use a name for the collection and start inserting data into it. To do so we have to use the `insert()` function, supplying it with the document to insert. 
 For example `db.unicorns.insert({name : 'Rahul', gender : 'm', weight : 50})`
-A document in MongoDB is a JSON like document with key-value pairs. Internally MongoDB stores data in the form of binary serialized JSON called BSON. Externally this means we have to use JSON like documents.
+> A document in MongoDB is a JSON like document with key-value pairs. Internally MongoDB stores data in the form of binary serialized JSON called BSON. Externally this means we have to use JSON like documents.
 The above example inserts data into the unicorns collection. If the collection does not exist, it creates a collection before inserting data into it. Now can you run `db.getCollectionNames()`? Is the output still an empty array? Also try running `show dbs`. What change do you see compared to last time?
 > Task: Can you insert another document into unicorns with name = 'Mohit', gender = 'm' and weight = 42
 <details>

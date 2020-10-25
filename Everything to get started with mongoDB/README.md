@@ -69,7 +69,8 @@ Congratulations...you successfuly created your first database in MongoDB. But wa
 Go ahead and run the command db.getCollectionNames(). If you do so you should get an empty array([]) because you haven't created any collection in the database yet. [Do you remember what a collection resembles to in a RDBMS?]
 Since a collection in MongoDB has no definite schema, you don't need to explicitely create a collection. You can simply use a name for the collection and start inserting data into it. To do so we have to use the `insert()` function, supplying it with the document to insert. 
 For example `db.unicorns.insert({name : 'Rahul', gender : 'm', weight : 50})`
-> A document in MongoDB is a JSON like document with key-value pairs. Internally MongoDB stores data in the form of binary serialized JSON called BSON. Externally this means we have to use JSON like documents.
+> Note: A document in MongoDB is a JSON like document with key-value pairs. Internally MongoDB stores data in the form of binary serialized JSON called BSON. Externally this means we have to use JSON like documents.
+
 The above example inserts data into the unicorns collection. If the collection does not exist, it creates a collection before inserting data into it. Now can you run `db.getCollectionNames()`? Is the output still an empty array? Also try running `show dbs`. What change do you see compared to last time?
 > Task: Can you insert another document into unicorns with name = 'Mohit', gender = 'm' and weight = 42
 <details>
@@ -124,8 +125,8 @@ For removing a document from a collection we use `remove()` function. It works s
 
 ## Summery ##
 To summerise this microbyte 
+- We got MongoDB up and running, looked at insert and remove commands(there isn't much more than what we have seen). We also introduced find and learned how to perform queries along with some important operators. 
 - We haven't looked at a little more advance stuffs like update, upserts, odering, indexing and paging which pushes the learning time beyond one hour for this microbyte. 
-- However, we did get MongoDB up and running, looked at insert and remove commands(there isn't much more than what we have seen). We also introduced find and learned how to perform queries along with some important operators. 
 - We have had a good start which should lay a solid foundation for your journey with MongoDB. 
 - Lastly I strongly urge you to play a little more with MongoDB. Try some more inserts, possibly in new collections. Use find and remove. After few tries on your own things that might have seemed confusing at first will hopefully fall into place. 
 

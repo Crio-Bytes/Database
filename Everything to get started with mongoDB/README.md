@@ -97,8 +97,12 @@ Before moving into quering the database, let's insert some more data into the da
 >
 > `{name : 'Karthik', loves : ['grapes'], weight : 48, gender : 'm', age : 17}`
 
-Now that we have sufficient data in the database we can query it easily and see the query results. So the function used for quering a MongoDB database is `find()`. It accepts a JSON document with field:value pairs to find the documents where field is equal to value. The special `$lt`, `$lte`, `$gt`, `$gte` and `$ne` are used for less than, less than or equal, greater than, greater than or equal and not equal operations. With this information let's make a very simple query. The query looks like `db.unicorns.find({gender : 'm'})`. What do you think it will return? If you are thinking all the male unicorns then you are correct. Run the command and verify it. Let's run another query to get all female unicorns that weigh more than 40kg. The query looks like `db.unicorns.find({gender : 'f', weight : {$gt : 40}})`.<br>
-Two more important query operations are `$in` and `$or`.<br>
+Now that we have sufficient data in the database we can query it easily and see the query results. So the function used for quering a MongoDB database is `find()`. It accepts a JSON document with field:value pairs to find the documents where field is equal to value. The special `$lt`, `$lte`, `$gt`, `$gte` and `$ne` are used for less than, less than or equal, greater than, greater than or equal and not equal operations. With this information let's make a very simple query. The query looks like `db.unicorns.find({gender : 'm'})`. What do you think it will return? If you are thinking all the male unicorns then you are correct. Run the command and verify it. 
+> Task: Can you now write a query to get the female unicorns who weigh greater than 60kg?
+<details>
+    <summary>Hint:</summary>
+    db.unicorns.find({gender : 'f', weight : {$gt : 60}})<br>
+</details>
 The `$in` operator is used for matching one of several values that we pass as an array. For example to find the unicorns that loves apple or orange the command would be `db.unicorns.find({loves : { $in : ['apple', 'orange'] }})`. Run the command and verify the result with the data you inserted.
 > Task: Can you now write a query to get the unicorns with name = 'Radha' or 'Tanmay' or 'Vikash' using `$in` operator?
 <details>
@@ -120,10 +124,9 @@ For removing a document from a collection we use `remove()` function. It works s
 <details>
     <summary>Hint:</summary>
     db.unicorns.remove({gender : 'm', weight : {$gte : 60}})<br>
-    Congratulations if you could come up with the correct answer.
 </details>
 
-## Summery ##
+## Summary ##
 To summerise this microbyte 
 - We got MongoDB up and running, looked at insert and remove commands(there isn't much more than what we have seen). We also introduced find and learned how to perform queries along with some important operators. 
 - We haven't looked at a little more advance stuffs like update, upserts, odering, indexing and paging which pushes the learning time beyond one hour for this microbyte. 

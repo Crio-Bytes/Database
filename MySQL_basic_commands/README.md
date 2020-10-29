@@ -133,6 +133,11 @@ select student_id,first_name from student;
 -> Insert 4-5 rows of data.
 -> View your table.
 
+### Activity
+
+-> Learn about BLOB, SET and ENUM datatype.
+-> Explore more about date and time datatypes.
+
 ### Congratulations!!! 
 #### You just completed level-1 of your basics of MySQL.
 
@@ -183,6 +188,11 @@ In our example:
 -> Insert a new course name "History" with course ID = 101, Professor name - Mathew, and duration 6 months.
 -> Update the table by setting the the duration of the last added row to 3 months and stream "arts".
 -> Delete the stream column.
+
+## Activity
+
+-> Learn to use AND, OR and NOT operators. They can be combined with where clause.
+-> Learn about LIKE, WILDCARDS AND IN.
 
 # Congratulations!! 
 ### You completed the 2-level of the basics of MySQL.

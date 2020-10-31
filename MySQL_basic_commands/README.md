@@ -15,7 +15,9 @@ It is really important to get started with the basics and understand the concept
 I would be using MySQL command line client 8.0. 
 You can download from https://dev.mysql.com/doc/refman/8.0/en/mysql.html .
 After doing the setup. You can access by entering your admin password.The console should look 
-image
+
+![first](https://github.com/happycoder0011/Database/blob/happycoder0011/basics_of_MySQl/add/MySQL_basic_commands/Images/Screenshot%20(83).png)
+
 
 2.**Create Database**
 The tables or the relations are held inside a database. So firstly you will have to create a data base.
@@ -24,11 +26,19 @@ Create Database
 ```sh
 create database database_name;
 ```
+
+
+![second](https://github.com/happycoder0011/Database/blob/happycoder0011/basics_of_MySQl/add/MySQL_basic_commands/Images/Screenshot%20(84).png)
+
+
 **Note:** MySQL is non case sensitive.
 To view all the databases you have in your system.
 ```sh
 show databases;
 ```
+
+![third](https://github.com/happycoder0011/Database/blob/happycoder0011/basics_of_MySQl/add/MySQL_basic_commands/Images/Screenshot%20(85).png)
+
 you will get a list of databases.
 To use any of the databases and create tables inside it.
 ```sh
@@ -80,6 +90,10 @@ To check your table has been created,
 ```sh
 describe table_name;
 ```
+
+![forth](https://github.com/happycoder0011/Database/blob/happycoder0011/basics_of_MySQl/add/MySQL_basic_commands/Images/Screenshot%20(86).png)
+
+![fifth](https://github.com/happycoder0011/Database/blob/happycoder0011/basics_of_MySQl/add/MySQL_basic_commands/Images/Screenshot%20(87).png)
 
 To view the list of all the tables in your database.
 ```sh

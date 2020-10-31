@@ -250,7 +250,13 @@ select * from student limit 5;
 ### Extra Bytes
 
 - Learn about BLOB, SET and ENUM datatype.
+You will come across various kinds of data in real world. It is important to know about datatypes that are available to store the data of your preference. You can design you schema using these datatypes also along with the basic datatypes.
+    - https://dev.mysql.com/doc/refman/8.0/en/enum.html
+    - https://dev.mysql.com/doc/refman/8.0/en/blob.html
+    - https://dev.mysql.com/doc/refman/8.0/en/set.html
 - Explore more about date and time datatypes.
+You can store date and time in many different formats.
+    - https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html
 
 ### Level-2
 - Add a new column to the course table named **"Stream"**.

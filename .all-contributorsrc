@@ -81,6 +81,18 @@
         "review",
         "eventOrganizing"
       ]
+    },
+    {
+      "login": "girishgr8",
+      "name": "Girish Thatte",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/43734717?v=4",
+      "profile": "https://www.linkedin.com/in/girish-thatte",
+      "contributions": [
+        "code",
+        "content",
+        "ideas",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,

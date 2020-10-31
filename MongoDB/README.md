@@ -18,9 +18,23 @@ Curious about knowing the difference between Relational & NoSQL databases? [Clic
 
 ---
 
+<p align="center">
+    <img src="images/upload.jpg" width="500" height="350">
+</p>
+
 ## **Think, Think, Think....**
 
-Do you know what is the maximum file size of any BSON-document that can be uploaded on MongoDB ?
+Do you know what is the maximum file size of any **BSON**-document that can be uploaded on MongoDB ?
+
+You may think what's this **BSON** at first place ?? You might have heard of JSON format but not BSON right ? Let's have some basic understanding of it first.
+
+-   JSON is a human-readable standard file format mainly used for transmission of data in the form of key-value attribute pairs.
+
+-   BSON(Binary file format Type) is a serialization format encoding format for JSON mainly used for storing and accessing the documents.
+
+Curious about knowing their differences and use ? Don't get confused with BSON & JSON. [Click here](https://www.geeksforgeeks.org/difference-between-json-and-bson/)
+
+Okay, so now let's get back to our question ..
 
 The answer is **16MB**. Ya !! only 16MB of BSON-document.
 Now you might wonder how to upload files which are larger than 16MB as now-a-days the camera's HDR images themselves are 5-6MB big or pdfs which we read generally are 30-40MB in size atleast.
@@ -40,6 +54,12 @@ Now you might wonder how to upload files which are larger than 16MB as now-a-day
 2. Basics of database system
 3. MongoDB basics
 4. Basic Python knowledge
+
+Follow this [link](https://realpython.com/installing-python/#how-to-install-python-on-windows) for Windows installation.
+
+Follow this [link](https://realpython.com/installing-python/#how-to-install-python-on-linux) for Linux installation.
+
+Follow this [link](https://realpython.com/installing-python/#how-to-install-python-on-macos) for MacOS installation.
 
 ---
 
@@ -235,11 +255,14 @@ Let's have a an understanding of the file is actually stored in these chunks:
 
 3. A chunk consists of a subset of sharded data. Each chunk has a inclusive lower and exclusive upper range based on the shard key.
 
-<img src="images/chunk.svg">
-
+<p align="center">
+    <img src="images/chunk.svg">
+</p>
 4. MongoDB splits chunks when they grow beyond the configured chunk size. A chunk may be split into multiple chunks where necessary. Inserts and updates may trigger splits.
 
-<img src="images/chunk_split.svg">
+<p align="center">
+    <img src="images/chunk_split.svg">
+</p>
 
 [Click Here for indepth explanation](https://docs.mongodb.com/manual/core/sharding-data-partitioning/)
 
@@ -321,11 +344,99 @@ Let's have a an understanding of the file is actually stored in these chunks:
 
 ---
 
+## Challenge activity
+
+### Activity 6: Take this challenge & crack it ! (Yes you can do it! Believe yourself)
+
+**Task: Upload the same file say `abc.txt` to the database thrice ! What do you think, will the file `abc.txt` will always be overwritten everytime you upload it or will it maintain copies of these files (versioning files) ?**
+
+Hint: Why would someone not want the every version of a particular file ?
+
+<br>
+
+<details>
+    
+    The answer is MongoDB keeps every copy of the uploaded file on the database i.e. every version of a particular file uploaded multiple times is maintained.
+
+    Let's analyse & understand a small scenario:
+
+    You may upload same file multiple times to some website. A very common example is uploading your Resume with same name on particular job website multiple times after doing updation or adding some content to it. Now think you applied to some job with 'version1' of your Resume to say 'jobA' and then updated with it(lets say 'version2') and applied to 'jobB'. Now, what will happen if the recruiter of jobA sees the 'version2' of you resume. Is that logical ? It may or may not be. You might have made a changes that suits for jobB, and previous version had content suited for jobA particularly.
+
+    If the database system would have overwritten your previous file, then the jobA's recruiter will find that your resume is not suited for that job role. Oh !! That seems to be an issue then. Well, that's why versioning is done !! Do not lose the old content, and have the new content too...
+
+    One famous example which does versioning is the developer's love Github.
+
+    Phew ! That is too much of background ? Let's see how MongoDB maintains version of files !!
+
+</details>
+<br>
+Let's insert `abc.txt` thrice. Have a look at following code and unserstand how can be get the versions of same file:
+
+```python
+    f = open('abc.txt')
+    # inital contents of 'abc.txt' : "initial"
+    fs.put(f, filename='abc.txt')
+    f.write('change1')
+    fs.put(f, filename='abc.txt')
+    f.write('change2')
+    fs.put(f, filename='abc.txt')
+    # Never forget to close the file if you are not using it.
+    # Leaving the files open may lead to resource leakage.
+    f.close()
+    # retrieve all the files stored using find() function
+    db.microbytes.files.find()
+```
+
+The output will be as follows:
+
+```json
+
+{ "_id" : ObjectId("54e44bcdd6e6fe5c5c2b7174"), "chunkSize" : 171310, "filename" : "abc.txt", "length" : 7, "uploadDate" : ISODate("2020-10-31T08:22:37.029Z"), "md5" : "84e7d1b222bbf179b91e4284996dfcb2" }
+{ "_id" : ObjectId("54e44bced6e6fe5c5c2b7175"), "chunkSize" : 171310, "filename" : "abc.txt", "length" : 7, "uploadDate" : ISODate("2020-10-31T08:22:38.958Z"), "md5" : "2cbcaf71ea3ff273dea2b8f32daf88e3" }
+{ "_id" : ObjectId("54e44bcfd6e6fe5c5c2b7176"), "chunkSize" : 171310, "filename" : "abc.txt", "length" : 7, "uploadDate" : ISODate("2020-10-31T08:22:39.878Z"), "md5" : "58b88f4c74d30e50e0da0d72c1cd480c" }
+
+```
+
+You can see it has done versioning of the file.
+
+-   `get_last_version()` method can be used to get the latest version of a file.
+
+```python
+    f = fs.get_last_version(filename="abc.txt"))
+    # Read the content of file
+    print(f.read())
+    # print the upload date & time of the file (this will print the upload time of file reference we got above i.e. f)
+    print(f.uploadDate)
+```
+
+The output is:
+
+```bash
+    >>> change2
+    >>> datetime.datetime(2020, 10, 31, 8, 40, 47, 629000)
+```
+
+---
+
+<br>
+
+<p align="center">
+    <img src="images/congrats.png" width="400" height="400">
+</p>
+
+<br>
+
 Hooray 🎉🎉 We have successfully setup clusters, created database,uploaded, retrieved, deleted files using GridFS file system it through our personal laptop/desktop.
 
 # Summary
 
-We have created a database on MongoDB Atlas and accessed it from your own laptop.
+In this microbyte,
+
+1. Cluster & Database creation on MongoDB
+2. Why GridFS & limitation of BSON type
+3. How to use GridFS for basic upload
+4. How MongoDB stores files actually on the clusters
+5. Versioning of files in MongoDB
 
 # References
 

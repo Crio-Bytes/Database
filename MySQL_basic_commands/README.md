@@ -1,18 +1,22 @@
 # Welcome to  Basics of MySQL
 ***
+
+## INTRODUCTION
+
 ## What is MySQL?
 **MySQL is a standard language for storing, manipulating and retrieving data. It is a relational database managemnet system software.**
 
 ## What you will be learning in this Micro-Byte?
 It is really important to get started with the basics and understand the concepts and commands to manipulate data stored in tables in MySQL. MySQL is of primary importance. No matter which field you pursue ahead in your career, be it data science, cloud computing, software development or any related discipline, you will have to know about the fundamentals of DBMS i.e- MySQL. 
 
-### Lets Get Started...
+### Pre-requisites
 ## Level-1
 1.**MySQL Editor**
 I would be using MySQL command line client 8.0. 
 You can download from https://dev.mysql.com/doc/refman/8.0/en/mysql.html .
 After doing the setup. You can access by entering your admin password.The console should look 
 image
+
 2.**Create Database**
 The tables or the relations are held inside a database. So firstly you will have to create a data base.
 
@@ -117,30 +121,6 @@ In our example:
 ```sh
 select student_id,first_name from student;
 ```
-## EXERCISE
--> Create a database of your name.
--> Use **your_name** database.
--> Create table named "**course**".
--> The columns will be as follows:
-| Columns  | Datatype|
-| --- | ---|
-|Course_ID | Varchar(20) |
-|Course_Name | Varchar(40) |
-|Professor | Varchar(40) |
-|Duration(in months) | Int |
-
--> Check the table is created using **describe** command.
--> Insert 4-5 rows of data.
--> View your table.
-
-### Activity
-
--> Learn about BLOB, SET and ENUM datatype.
--> Explore more about date and time datatypes.
-
-### Congratulations!!! 
-#### You just completed level-1 of your basics of MySQL.
-
 ## Level-2
 
 You learnt to create and insert values in your table. You can think of situations where you may wish to add a column or alter(change) some value.We will learn about those commands in this section.
@@ -181,21 +161,6 @@ In our example:
 ```
 **Note:** Where clause is used to identify the particular row/rows that will be updated with the column value.
 
-## Exercise
-
--> Add a new column to the course table named "Stream".
--> Update the table by setting the stream as "commerce" for "accountancy" course.
--> Insert a new course name "History" with course ID = 101, Professor name - Mathew, and duration 6 months.
--> Update the table by setting the the duration of the last added row to 3 months and stream "arts".
--> Delete the stream column.
-
-## Activity
-
--> Learn to use AND, OR and NOT operators. They can be combined with where clause.
--> Learn about LIKE, WILDCARDS AND IN.
-
-# Congratulations!! 
-### You completed the 2-level of the basics of MySQL.
 
 ## Level-3
 
@@ -249,8 +214,45 @@ There can be 100s of rows of data in your table. TOP allows you to view limited 
 ```sh
 select * from student limit 5;
 ```
-## Exercise 
--> Insert the dummy data:
+
+## Activity
+### Level- 1
+- Create a database of your name.
+- Use or enter into **your_name** database.
+- Create table named "**course**".
+- The columns will be as follows:
+
+| Columns  | Datatype|
+| --- | ---|
+|Course_ID | Varchar(20) |
+|Course_Name | Varchar(40) |
+|Professor | Varchar(40) |
+|Duration(in months) | Int |
+
+- Check that the table is created and it's metadata using **describe** command.
+- Insert 4-5 rows of data.
+- View your table. [Hint: SELECT command]
+
+### Extra Bytes
+
+- Learn about BLOB, SET and ENUM datatype.
+- Explore more about date and time datatypes.
+
+### Level-2
+- Add a new column to the course table named **"Stream"**.
+- Update the table by setting the stream as "commerce" for "accountancy" course.
+- Insert a new course name "History" with course ID = 101, Professor name - Mathew, and duration 6 months.
+- Update the table by setting the the duration of the last added row to 3 months and stream "arts".
+- Delete the stream column.
+
+## Extra Bytes
+
+- Learn to use AND, OR and NOT operators. They can be combined with where clause.
+- Learn about LIKE, WILDCARDS AND IN.
+
+## Level - 3 
+- Insert the dummy data:
+
 |Course_ID|Course_Name| Professor|Duration| Stream|
 | --- | --- | ---| --- | --- |
 |C101|Accountancy|Matthew|4|Commerce|
@@ -264,8 +266,9 @@ select * from student limit 5;
 |C109|Sociology|Ruby|5|Arts|
 |C108|Business studies|montana|3|Commerce|
 
--> query the details of courses with duration greater than 6 months.
+- query the details of courses with duration greater than 6 months.
 expected output-
+
 |Course_ID|Course_Name| Professor|Duration| Stream|
 | --- | --- | ---| --- | --- |
 |C102|Biology|Steward|7|Science|
@@ -273,10 +276,11 @@ expected output-
 |C107|Physics|Harry|8|Science|
 |C103|Chemistry|john|8|Science|
 
--> Query the courses in ascending order by course_id.
--> Query the top 5 results order by stream in descending order.
-#### Activity
+- Query the courses in ascending order by course_id.
+- Query the top 5 results order by stream in descending order.
+## Extra Bytes
 What should be the order of writing the clause if you use all the clause at the same time? Find out.
+
 # Congratulations!! You have successfully completed the basics of MySQL byte.
 
 

@@ -224,15 +224,16 @@ Let's have a an understanding of the file is actually stored in these chunks:
 
 ```json
 {
-  "_id" : The unique <ObjectId> of the chunk., 
+  "_id" : The unique <ObjectId> of the chunk.,
   "files_id" : The _id of the “parent” document, as specified in the files collection.,
   "n" : The sequence number of the chunk. GridFS numbers all chunks, starting with 0,
   "data" : The chunk’s payload(data) as a BSON binary type.
 }
 ```
+
 2. The default chunk size in MongoDB is 64 megabytes.
 
-3. A chunk consists of a subset of sharded data. Each chunk has a inclusive lower and exclusive upper range based on the shard key. 
+3. A chunk consists of a subset of sharded data. Each chunk has a inclusive lower and exclusive upper range based on the shard key.
 
 <img src="images/chunk.svg">
 

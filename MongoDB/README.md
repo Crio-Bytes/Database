@@ -222,7 +222,7 @@ Let's have a an understanding of the file is actually stored in these chunks:
 
 1. Each document in the chunks collection(`fs.chunks`) represents a distinct chunk of a file as represented in GridFS.
 
-```json
+```
 {
   "_id" : The unique <ObjectId> of the chunk.,
   "files_id" : The _id of the “parent” document, as specified in the files collection.,
@@ -318,6 +318,7 @@ Let's have a an understanding of the file is actually stored in these chunks:
 
 </details>
 <br>
+
 ---
 
 Hooray 🎉🎉 We have successfully setup clusters, created database,uploaded, retrieved, deleted files using GridFS file system it through our personal laptop/desktop.

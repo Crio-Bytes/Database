@@ -389,7 +389,7 @@ Let's insert `abc.txt` thrice. Have a look at following code and unserstand how 
 
 The output will be as follows:
 
-```json
+```
 
 { "_id" : ObjectId("54e44bcdd6e6fe5c5c2b7174"), "chunkSize" : 171310, "filename" : "abc.txt", "length" : 7, "uploadDate" : ISODate("2020-10-31T08:22:37.029Z"), "md5" : "84e7d1b222bbf179b91e4284996dfcb2" }
 { "_id" : ObjectId("54e44bced6e6fe5c5c2b7175"), "chunkSize" : 171310, "filename" : "abc.txt", "length" : 7, "uploadDate" : ISODate("2020-10-31T08:22:38.958Z"), "md5" : "2cbcaf71ea3ff273dea2b8f32daf88e3" }

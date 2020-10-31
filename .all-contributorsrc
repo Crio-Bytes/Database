@@ -59,6 +59,28 @@
         "maintenance",
         "review"
       ]
+    },
+    {
+      "login": "manishdasa100",
+      "name": "Manish Das",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/55842398?v=4",
+      "profile": "https://github.com/manishdasa100",
+      "contributions": [
+        "code",
+        "content",
+        "ideas",
+        "doc"
+      ]
+    },
+    {
+      "login": "Kevinpaulose05",
+      "name": "Kevin Paulose",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/64629493?v=4",
+      "profile": "https://kevinpaulose05.github.io/",
+      "contributions": [
+        "review",
+        "eventOrganizing"
+      ]
     }
   ],
   "contributorsPerLine": 7,

@@ -2,24 +2,44 @@
 
 ### MongoDB
 
-> MongoDB is a open-source document database and leading NoSQL database with the scalability and flexibility that you want with the querying and indexing.
+-   MongoDB is a open-source document database and leading NoSQL database with the scalability and flexibility that you want with the querying and indexing.
 
 ### MongoDB Atlas
 
-> MongoDB Atlas provides an easy way to host and manage your data in the cloud. MongoDB Atlas is a fully-managed cloud database.
+-   MongoDB Atlas provides an easy way to host and manage your data in the cloud. MongoDB Atlas is a fully-managed cloud database.
 
 ---
 
-> Ever wondered how to store large files like pdfs or images into databases ? If you have basic knowlegde of MySQL (A relational database), then you might know there is **blob** datatype which can be used to store pdfs. But how to do the same in MongoDB ?
+Ever wondered how to store large files like pdfs or images into databases ? If you have basic knowlegde of MySQL (A relational database), then you might know there is **blob** datatype which can be used to store pdfs. But how to do the same in MongoDB ?
 
-> MySQL is relational database and hence it is not recommended to use for storing large amount of files, instead many professionals use MongoDB (A document-oriented NoSQL) database for it.
+MySQL is relational database and hence it is not recommended to use for storing large amount of files, instead many professionals use MongoDB (A document-oriented NoSQL) database for it.
+
+Curious about knowing the difference between Relational & NoSQL databases? [Click here](https://www.geeksforgeeks.org/difference-between-sql-and-nosql/)
+
+---
+
+## **Think, Think, Think....**
+
+Do you know what is the maximum file size of any BSON-document that can be uploaded on MongoDB ?
+
+The answer is **16MB**. Ya !! only 16MB of BSON-document.
+Now you might wonder how to upload files which are larger than 16MB as now-a-days the camera's HDR images themselves are 5-6MB big or pdfs which we read generally are 30-40MB in size atleast.
 
 ### Now, the solution for storing big files is using **GridFS with MongoDB**.
 
 ### **GridFS**
 
-> GridFS is the MongoDB specification for storing and retrieving large files such as images, audio files, video files, etc. GridFS has the capability to store files even greater than its document size limit of 16MB.
-> GridFS divides a file into chunks and stores each chunk(piece) of data in a separate document, each of maximum size 255K.
+-   GridFS is the MongoDB specification for storing and retrieving large files such as images, audio files, video files, etc. GridFS has the capability to store files even greater than its document size limit of 16MB.
+-   GridFS divides a file into chunks and stores each chunk(piece) of data in a separate document, each of maximum size 255K.
+
+---
+
+# Pre-requisites
+
+1. Python3 should be installed on the system
+2. Basics of database system
+3. MongoDB basics
+4. Basic Python knowledge
 
 ---
 
@@ -58,7 +78,7 @@ import dns
 
 ### Activity 3: Connect to the cluster and access the database
 
-> Now, we have imported the libraries, our task is to connect to the online cluster through our system.
+Now, we have imported the libraries, our task is to connect to the online cluster through our system.
 
 **Task 1: Get the connection string to your cluster & connect to your database**
 
@@ -81,7 +101,7 @@ db = conn[dbname]
 
 ### Activity 4: Lets get started with interacting with our db & clear some basics
 
-> **Task 1: Create the GridFS object**
+**Task 1: Create the GridFS object**
 
 -   **objects** ! The entire universe is made of objects !!!
 -   Here, I refer object as creating the instance of GridFS class i.e. `GridFS()`.
@@ -98,7 +118,7 @@ db = conn[dbname]
 
 <br>
 
-> **Task 2: Store simple string "Microbytes" in the database using gridfs**
+**Task 2: Store simple string "Microbytes" in the database using gridfs**
 
 -   Use `put()` method of gridfs instance we created to insert "Microbytes" in db
 -   The `put()` method returns the object id of newly inserted object (may it be string or any file)
@@ -112,9 +132,9 @@ db = conn[dbname]
 </details>
 <br>
 
-**Note: This string is stored in `fs` namespace which is the default namespace used for storing data using GridFS**
+> **Note: This string is stored in `fs` namespace which is the default namespace used for storing data using GridFS**
 
-> Curious about knowing what is **namespace** ?
+Curious about knowing what is **namespace** ?
 
 -   A namespace is a system to have a unique name for each and every object.
 -   At times, an object might be a variable or a method.
@@ -138,6 +158,7 @@ db = conn[dbname]
 ```
 
 </details>
+<br>
 
 **Task 2: Insert any pdf file using gridfs**
 
@@ -163,7 +184,71 @@ Here, The put() method returned the file_id.
 </details>
 <br>
 
--   Now if you go to the database 'CrioBytes' in your cluster you fill find the collections named 'microbytes.files' & 'microbytes.chunks'
+Now if you go to the database 'CrioBytes' in your cluster you fill find the collections named 'microbytes.files' & 'microbytes.chunks'
+
+Now, there's some real crux & beatiful concept behind storing large documents using GridFS.
+
+Let's dive deeper in understanding it....
+
+-   You might know, that any database system must satisfy the ACID properties, where **A** stands for atomicity which is one of the most crucial thing to satify.
+
+-   You might also know that, in MongoDB we can embed the documents.
+
+-   In MongoDB, an operation on a single document is atomic (since we mongodb is document-oriented database).
+
+-   But for situations that require atomicity of reads and writes to multiple documents (in a single or multiple collections), MongoDB supports multi-document transactions. With distributed transactions, transactions can be used across multiple operations, collections, databases, documents, and shards.
+
+-   Multi-document transactions also are atomic (i.e. provide an “completely-or-nothing” logic).
+
+-   When a transaction commits, all changes done to any data items in the transaction are saved and visible outside the transaction. That is, a transaction will not commit some of its changes while rolling back others.
+
+-   Now, until a transaction commits, the data changes made in the transaction are not visible outside the transaction. But when a transaction writes to multiple shards(replica of entire data a cluster contains), not all outside read operations need to wait for the result of the committed transaction to be visible across the shards.
+
+-   There can be large number of transactions which want to simply read the data, and very few transactions which want to write to these shards.
+
+-   Now, we can see this problem can drastically reduce the performance of database system if more read operations and less write operations occur.
+
+-   **This problem of any database system is quite famous which is basically due to maintaining atomicity(A) and at the same time providing concurrency(C).**
+
+-   But in most cases, the multi-document transaction incurs a greater performance cost over single document writes.
+
+-   To remove this drawback, GridFS does not support multi-document transactions.
+
+-   Instead of storing a file in a single document, GridFS divides the file into parts, or chunks, and stores each chunk as a separate document.
+
+-   GridFS uses two collections to store files. One collection stores the file chunks(`fs.chunks`), and the other stores file metadata(`fs.files`). Remember, we mentioned these two collections above.
+
+Let's have a an understanding of the file is actually stored in these chunks:
+
+1. Each document in the chunks collection(`fs.chunks`) represents a distinct chunk of a file as represented in GridFS.
+
+```json
+{
+  "_id" : The unique <ObjectId> of the chunk., 
+  "files_id" : The _id of the “parent” document, as specified in the files collection.,
+  "n" : The sequence number of the chunk. GridFS numbers all chunks, starting with 0,
+  "data" : The chunk’s payload(data) as a BSON binary type.
+}
+```
+2. The default chunk size in MongoDB is 64 megabytes.
+
+3. A chunk consists of a subset of sharded data. Each chunk has a inclusive lower and exclusive upper range based on the shard key. 
+
+<img src="images/chunk.svg">
+
+4. MongoDB splits chunks when they grow beyond the configured chunk size. A chunk may be split into multiple chunks where necessary. Inserts and updates may trigger splits.
+
+<img src="images/chunk_split.svg">
+
+[Click Here for indepth explanation](https://docs.mongodb.com/manual/core/sharding-data-partitioning/)
+
+**You might wonder when should one actually use GridFS ?**
+
+1. If your filesystem limits the number of files in a directory, you can use GridFS to store as many files as needed.
+
+2. When you want to access information from portions of large files without having to load whole files into memory, you can use GridFS to recall sections of files without reading the entire file into memory.
+
+3. When you want to keep your files and metadata automatically synced and deployed across a number of systems and facilities, you can use GridFS. When using geographically distributed replica sets, MongoDB can distribute files and their metadata automatically to a number of mongod instances and facilities.
 
 **Task 3: Read the uploaded file using the file_id object**
 
@@ -192,7 +277,7 @@ Here, The put() method returned the file_id.
     fs.put(f, filename="sample_text.txt")
 ```
 
-> What if we want to insert the file which is not present on the local system ? Can we insert some text file by inputting the data into that text file on the fly ? (dynamically) !! This might be necessary in some crucial tasks !!! So, lets see how to do so !
+-   What if we want to insert the file which is not present on the local system ? Can we insert some text file by inputting the data into that text file on the fly ? (dynamically) !! This might be necessary in some crucial tasks !!! So, lets see how to do so !
 
 -   You might remember, we inserted the simple string "MicroBytes" at the start, and in subsequent task, we inserted text file. Now, the solution is simple, combine/tweak both ?
 
@@ -234,7 +319,7 @@ Here, The put() method returned the file_id.
 <br>
 ---
 
-Hooray 🎉🎉 We have successfully setup clustes, created database,uploaded, retrieved, deleted files using GridFS file system it through our personal laptop/desktop.
+Hooray 🎉🎉 We have successfully setup clusters, created database,uploaded, retrieved, deleted files using GridFS file system it through our personal laptop/desktop.
 
 # Summary
 
@@ -246,3 +331,4 @@ We have created a database on MongoDB Atlas and accessed it from your own laptop
 2. https://www.w3schools.com/python/python_mongodb_getstarted.asp
 3. https://www.tutorialspoint.com/mongodb/mongodb_gridfs.htm
 4. https://psabhay.com/posts/mongodb/mongodb-gridfs-using-python/
+5. https://docs.mongodb.com/manual/core/gridfs/

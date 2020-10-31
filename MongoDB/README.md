@@ -10,139 +10,231 @@
 
 ---
 
-# Prerequisites
+> Ever wondered how to store large files like pdfs or images into databases ? If you have basic knowlegde of MySQL (A relational database), then you might know there is **blob** datatype which can be used to store pdfs. But how to do the same in MongoDB ?
 
-No background knowledge is required for this tutorial, just simply follow the activities given below.
+> MySQL is relational database and hence it is not recommended to use for storing large amount of files, instead many professionals use MongoDB (A document-oriented NoSQL) database for it.
+
+### Now, the solution for storing big files is using **GridFS with MongoDB**.
+
+### **GridFS**
+
+> GridFS is the MongoDB specification for storing and retrieving large files such as images, audio files, video files, etc. GridFS has the capability to store files even greater than its document size limit of 16MB.
+> GridFS divides a file into chunks and stores each chunk(piece) of data in a separate document, each of maximum size 255K.
 
 ---
 
 # Activities
 
-### Activity 1: Create or login into MongoDB Atlas account
+### Activity 1: Setting up MongoDB cluster using MongoDB Atlas
 
--   Either Register on: https://account.mongodb.com/account/register
+[Follow the instructions in the document](https://docs.google.com/document/d/1R03KKVmihUU7nrjdTSZfwj6qLB-UvvR8OybtpjRWtFc/edit?usp=sharing)
 
-    <img src="images/register.png">
+---
 
-    **(OR)**
+### Activity 2: Import the libraries which will be required for our tasks:
 
-    Login at: https://account.mongodb.com/account/login
-
-    <img src="images/login.png"/>
-
--   You will land on the following dashboard page:
-
-    <img src="images/dashboard.png"/>
-
-### Activity 2: Create a new cluster for your database
-
--   Click on Create Cluster on dashboard page and choose the type of cluster plan
-
-    <img src="images/dashboard.png"/>
-
--   Choose on Cloud Provider & Cloud region
-
-    <img src="images/createCluster1.png"/>
-
--   Choose your cluster settings & name your cluster
-
-    <img src="images/createCluster2.png"/>
-
--   Now, click "Create Cluster" and it will take a few minutes to setup your cluster on cloud
-
-    <img src="images/createCluster3.png"/>
-
-### Activity 3: Add Connection and your IP address to the list to access the cluster
-
--   Click on "Connnect" for conncection setup
-
-      <img src="images/setup0.jpg"/>
-
--   Here, this tutorial uses connect using by using MongoDB's native drivers (Option2)
-
-      <img src="images/setup1.jpg"/>
-
--   Here, choose the driver of your choice e.g. Python, Nodejs and choose the version of lanugage you are using.
-
-      <img src="images/setup2.jpg"/>
-
--   For adding the IP address click on "Network Access" and all your IP address over there(This is done for secure access to cluster).
-
--   If you want the cluster to be accessible from everywhere, then just ensure whether there exists an entry of 0.0.0.0 in the list.
-
--   Now, create a python file and insert the following snippet
-
-**Note: Copy the driver code example of your created cluster, as the connection url is different for each cluster**
-
-```python
-import pymongo
-
-connection_url = "mongodb+srv://Girish:<password>@criobytes.dyseu.mongodb.net/<dbname>?retryWrites=true&w=majority"
-
-# This url will be different for everyone.
-# Update the <password> with your user's password (You will have to create one new user if not available).
-# Replace <dbname> with the name of database of your choice.
-
-client = pymongo.MongoClient(connection_url)
-db = client.test
-```
-
-### Activity 4: Install the native driver library to connect to your MongoDB Cluster
-
--   This tutorial uses Python language for demonstration.
+-   This microbyte uses Python language for performing tasks.
 -   Firstly open terminal and copy the following snippet & paste it in the terminal.
 
 ```bash
-    $ pip install pymongo
+    $ pip install pymongo gridfs bson dnspython
 ```
 
-### Activity 5: Run the python file & watch the results
+1. Import MongoClient so that we can connect to a running mongod instance on our cluster.
+2. Import GridFS from gridfs module so that we may put, get and delete files in MongoDB.
+3. Import objectid from the bson library because we will be requiring it.
+4. dnspython package is needed to make network calls to the cluster.
 
--   Python code snippet for accessing & performing read/writes on the database in your cluster
+-   Open the command prompt and type **python** and click enter (This will turn your cmd into python shell):
 
 ```python
-
-import pymongo
-# pip install dnspython (This library is needed to make network calls to the cluster)
+from pymongo import MongoClient
+from gridfs import GridFS
+from bson import objectid
 import dns
-
-db_name = "CrioBytes"
-connection_url = "mongodb+srv://CrioBytes:CrioBytes@criobytes.dyseu.mongodb.net/"+db_name+"?retryWrites=true&w=majority"
-collection_name = "users"
-# This url will be different for everyone.
-# Update the password your user's password (You will have to create one new user if not available).
-conn = pymongo.MongoClient(connection_url)
-db = conn[db_name]
-col = db[collection_name]
-
-# data to be inserted in database db & in collection col
-user = {"name": "Jackie", "gender": "Male" }
-
-# insert_one is used to insert single document
-ins_doc = col.insert_one(user)
-
-# print the document id of the newly inserted document
-print("The id of newly inserted document is: ", ins_doc.inserted_id)
-
-new_user = {"name": "Julia" , "gender": "Female"}
-ins_doc = col.insert_one(new_user)
-# print the document id of the newly inserted document
-print("The id of newly inserted document is: ", ins_doc.inserted_id)
-
-for c in col.find():
-    print(c)
 ```
 
--   The output of above code:
+---
 
-    <img src="./images/output1.png">
+### Activity 3: Connect to the cluster and access the database
 
--   Now, go to the cluster on atlas and click collections, one will find the newly inserted data being updated there.
+> Now, we have imported the libraries, our task is to connect to the online cluster through our system.
 
-      <img src="./images/output2.png">
+**Task 1: Get the connection string to your cluster & connect to your database**
+
+<details>
+    <summary>Hint</summary>
+While performing the Activity 1 above, you might have encountered with the connection string to your cluster and wondered about the use of it. This connection string is unique for every individual's cluster. Copy that connection string. Now use MongoClient to connect to it.
+
+```python
+connection_url = "mongodb+srv://CrioBytes:CrioBytes@criobytes.dyseu.mongodb.net/CrioBytes?retryWrites=true&w=majority"
+conn = pymongo.MongoClient(connection_url)
+# dbname will be present in your url (default db) named `test`
+dbname = 'CrioBytes'
+db = conn[dbname]
+```
+
+</details>
+<br>
+
+---
+
+### Activity 4: Lets get started with interacting with our db & clear some basics
+
+> **Task 1: Create the GridFS object**
+
+-   **objects** ! The entire universe is made of objects !!!
+-   Here, I refer object as creating the instance of GridFS class i.e. `GridFS()`.
+-   `GridFS()` takes an argument which is the object (oops! again an object) of db which we created in Activity 3.
+
+<details>
+    <summary>Hint</summary>
+
+```python
+    gridfs = GridFS(db)
+```
+
+</details>
 
 <br>
-Hooray 🎉🎉 We have successfully setup clusters, created database and acccessed it through our personal laptop/desktop.
+
+> **Task 2: Store simple string "Microbytes" in the database using gridfs**
+
+-   Use `put()` method of gridfs instance we created to insert "Microbytes" in db
+-   The `put()` method returns the object id of newly inserted object (may it be string or any file)
+<details>
+    <summary>Hint</summary>
+
+```python
+    obj = gridfs.put('MicroBytes')
+```
+
+</details>
+<br>
+
+**Note: This string is stored in `fs` namespace which is the default namespace used for storing data using GridFS**
+
+> Curious about knowing what is **namespace** ?
+
+-   A namespace is a system to have a unique name for each and every object.
+-   At times, an object might be a variable or a method.
+-   Lets break the keyword **namespace** as name (which means name, an unique identifier) + space(which tells us something related to scope). Here, a name might be of any method or variable and space depends upon the location from where is trying to access a variable or a method.
+    <br>
+
+---
+
+### Activity 5: Diving deeper into GridFS
+
+**Task 1: Create your own namespace**
+
+-   Connect to cluster and create your own namespace while instantiating gridfs object
+-   The `GridFS()` can also take another parameter which is the name of the **namespace** we wanna create.
+
+<details>
+<summary>Hint</summary>
+
+```python
+    fs = GridFS(db, "microbytes")
+```
+
+</details>
+
+**Task 2: Insert any pdf file using gridfs**
+
+-   Now, for inserting any file, we must have a reference pointing to that file.
+-   In Python, we use `open()` function to open any file. This method returns a reference object to the file we opened.
+
+```python
+    f = open('/path_to_your_file/sample_bytes.pdf')
+```
+
+-   Use this reference object for inserting our pdf file.
+
+<details>
+<summary>Hint</summary>
+
+```python
+    file_id = fs.put(f, content_type='application/pdf', filename='sample_bytes.pdf')
+    # you can provide the filename if you want to upload it with different name
+```
+
+Here, The put() method returned the file_id.
+
+</details>
+<br>
+
+-   Now if you go to the database 'CrioBytes' in your cluster you fill find the collections named 'microbytes.files' & 'microbytes.chunks'
+
+**Task 3: Read the uploaded file using the file_id object**
+
+-   Can you use `get()` & `read()` method provided by `fs` object.
+-   `get()` method returns a file-like-object, and to see the content, we can call `read()` method on this file-like-object.
+-   Will `get()` method require some parameter associated with the file we wanna retrieve? Ofc yes ! To find the file we want, it takes in the file_id.
+
+<details>
+<summary>Hint</summary>
+
+```python
+    print(fs.get(file_id).read())
+    # This will print the content of the file which has id as file_id
+```
+
+</details>
+<br>
+
+**Task 4: Let's insert txt file into MongoDB**
+
+-   Since you have worked with inserting pdf files, this task shall not be difficult one.
+-   You will perform something just like below :
+
+```python
+    f = open('/path_to_your_file/sample_bytes.pdf')
+    fs.put(f, filename="sample_text.txt")
+```
+
+> What if we want to insert the file which is not present on the local system ? Can we insert some text file by inputting the data into that text file on the fly ? (dynamically) !! This might be necessary in some crucial tasks !!! So, lets see how to do so !
+
+-   You might remember, we inserted the simple string "MicroBytes" at the start, and in subsequent task, we inserted text file. Now, the solution is simple, combine/tweak both ?
+
+```python
+    fs.put("Hello, This is a sample string", filename="new.txt")
+```
+
+<br>
+
+**Task 5: Find a file in our database & read its contents**
+
+-   As mentioned Task 2 of Activity 5, the files are stored in db.namespace.files collection. Use this collection to find the file stored.
+-   Use `find_one()` method to find the document inside the collection.
+-   Use `get()` & `read()` to read the contents of file.
+<details>
+    <summary>Hint</summary>
+
+```python
+    file_id = db.microbytes.files.find_one({"filename" : "sample_text.txt"},{"_id":1})
+    print(fs.get(file_id['_id']).read())
+    # Contents of the file `sample_text.txt` will be printed
+```
+
+</details>
+<br>
+
+**Task 6: Delete the file**
+
+-   Now, suppose we want to delete the stored file, then use `delete()` method of `fs` object.
+-   `delete()` method will also require the file_id of the file one wants to delete (Remember ! The `get()` method also needed file_id)
+<details>
+    <summary>Hint</summary>
+
+```python
+    fs.delete(file_id)
+```
+
+</details>
+<br>
+---
+
+Hooray 🎉🎉 We have successfully setup clustes, created database,uploaded, retrieved, deleted files using GridFS file system it through our personal laptop/desktop.
 
 # Summary
 
@@ -152,3 +244,5 @@ We have created a database on MongoDB Atlas and accessed it from your own laptop
 
 1. https://docs.atlas.mongodb.com/getting-started/
 2. https://www.w3schools.com/python/python_mongodb_getstarted.asp
+3. https://www.tutorialspoint.com/mongodb/mongodb_gridfs.htm
+4. https://psabhay.com/posts/mongodb/mongodb-gridfs-using-python/

@@ -4,29 +4,31 @@
 ## INTRODUCTION
 
 ## What is MySQL?
-**MySQL is a standard language for storing, manipulating and retrieving data. It is a relational database managemnet system software.**
+**MySQL is a standard language for storing, manipulating and retrieving data. It is a relational database management system software.**
 
 ## What you will be learning in this Micro-Byte?
 It is really important to get started with the basics and understand the concepts and commands to manipulate data stored in tables in MySQL. MySQL is of primary importance. No matter which field you pursue ahead in your career, be it data science, cloud computing, software development or any related discipline, you will have to know about the fundamentals of DBMS i.e- MySQL. 
 
 ### Pre-requisites
-## Level-1
-1.**MySQL Editor**
+
+**MySQL Editor**
 I would be using MySQL command line client 8.0. 
 You can download from https://dev.mysql.com/doc/refman/8.0/en/mysql.html .
 After doing the setup. You can access by entering your admin password.The console should look 
 
+
+<details><summary>Terminal Image</summary>
 ![first](https://github.com/happycoder0011/Database/blob/happycoder0011/basics_of_MySQl/add/MySQL_basic_commands/Images/Screenshot%20(83).png)
+</details>
 
-
-2.**Create Database**
+## Activity - 0
+**Create Database**
 The tables or the relations are held inside a database. So firstly you will have to create a data base.
 
 Create Database
 ```sh
 create database database_name;
 ```
-
 
 ![second](https://github.com/happycoder0011/Database/blob/happycoder0011/basics_of_MySQl/add/MySQL_basic_commands/Images/Screenshot%20(84).png)
 
@@ -47,7 +49,7 @@ use database_name;
 You will get a message - " Database Changed".
 Now you can start creating tables inside your database.
 
-3.**Create Table**
+**Create Table**
 Now, You need to know that in a table there are two major components - 
 - **Data** - It is the values of different entities that you store in a table.For eg- In a students table, you will have data of different students such as rohan,nikhil etc.Their marks, class and other features in different rows.
 - **Metadata** - Metadata is generally known as data about the data. In simple terms, you can understand it as data has certain properties when getting stored.
@@ -76,7 +78,9 @@ create table table_name(Column_1 datatype_1,
                         Column_3 datatype_3,
                         Column_4 datatype_4,);
 ```
-In our example:
+
+
+<details><summary>Hint</summary>
 ```sh
 create table student(Student_ID varchar(40), 
                      First_Name varchar(40), 
@@ -85,6 +89,8 @@ create table student(Student_ID varchar(40),
                      Course_Name varchar(40), 
                      Admission_date date);
 ```
+
+</details>
 
 To check your table has been created,
 ```sh
@@ -99,27 +105,28 @@ To view the list of all the tables in your database.
 ```sh
 show tables;
 ```
-4.**Insert values in table**
+**Insert values in table**
 The table has been created. Now, you can insert your data in your table.
 
 To insert data in the table
-
-```sh
-insert into table_name values("AC101","ROHAN","KUMAR",1,"Accountancy","2020-07-02");
-```
-In our example:
+<details><summary>Hint</summary>
 ```sh
 insert into student values("AC101","ROHAN","KUMAR",1,"Accountancy","2020-07-02");
 ```
+</details>
+
+
 To insert values in selected columns
 ```sh
  INSERT INTO table_name(column_1,column_2) VALUES("value_1","value_2");
 ```
-In our example:
+<details><summary>Hint</summary>
 ```sh
  INSERT INTO STUDENT(First_name,Last_Name) VALUES("Karan","kashyap");
 ```
-5.**View table**
+</details>
+
+**View table**
 To check and view your table.
 
 ```sh
@@ -131,11 +138,13 @@ To view selective columns.
 ```sh
 select column_1,column_2 from table_name;
 ```
-In our example:
+<details><summary>Hint</summary>
 ```sh
 select student_id,first_name from student;
 ```
-## Level-2
+</details>
+
+## Activity - 1
 
 You learnt to create and insert values in your table. You can think of situations where you may wish to add a column or alter(change) some value.We will learn about those commands in this section.
 
@@ -168,15 +177,16 @@ General Syntax:
 ```sh
 update table_name set column_1 = value,column_2 = value where condition;
 ```
-
-In our example:
+<details><summary>Hint</summary>
 ```sh
  update student set student_id = "AC102",Course_ID=2, Course_Name = "Biology" where first_name="karan";
 ```
+</details>
+
 **Note:** Where clause is used to identify the particular row/rows that will be updated with the column value.
 
 
-## Level-3
+## Activity - 2
 
 Now, that you are well acquainted with tablecreation,update and insert commands. You can take the next step ahead. 
 SQL stands for **Structured Query Language** .Query is essential to learn as you wont be working with the whole data at a time. You need to be able to extract and evaluate data on the basis of conditions. 
@@ -229,8 +239,8 @@ There can be 100s of rows of data in your table. TOP allows you to view limited 
 select * from student limit 5;
 ```
 
-## Activity
-### Level- 1
+## Task - 1
+
 - Create a database of your name.
 - Use or enter into **your_name** database.
 - Create table named "**course**".
@@ -258,7 +268,7 @@ You will come across various kinds of data in real world. It is important to kno
 You can store date and time in many different formats.
     - https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html
 
-### Level-2
+## Task - 2
 - Add a new column to the course table named **"Stream"**.
 - Update the table by setting the stream as "commerce" for "accountancy" course.
 - Insert a new course name "History" with course ID = 101, Professor name - Mathew, and duration 6 months.
@@ -270,7 +280,7 @@ You can store date and time in many different formats.
 - Learn to use AND, OR and NOT operators. They can be combined with where clause.
 - Learn about LIKE, WILDCARDS AND IN.
 
-## Level - 3 
+## Task - 3 
 - Insert the dummy data:
 
 |Course_ID|Course_Name| Professor|Duration| Stream|
@@ -300,6 +310,10 @@ expected output-
 - Query the top 5 results order by stream in descending order.
 ## Extra Bytes
 What should be the order of writing the clause if you use all the clause at the same time? Find out.
+
+## Extra Reads
+- https://www.ibm.com/cloud/learn/relational-databases
+- https://aws.amazon.com/relational-database/
 
 # Congratulations!! You have successfully completed the basics of MySQL byte.
 

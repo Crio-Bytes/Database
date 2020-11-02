@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # Introduction
@@ -29,6 +29,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://www.linkedin.com/in/girish-thatte"><img src="https://avatars3.githubusercontent.com/u/43734717?v=4" width="100px;" alt=""/><br /><sub><b>Girish Thatte</b></sub></a><br /><a href="https://github.com/Crio-Bytes/Database/commits?author=girishgr8" title="Code">💻</a> <a href="#content-girishgr8" title="Content">🖋</a> <a href="#ideas-girishgr8" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/Crio-Bytes/Database/commits?author=girishgr8" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/archithdwij"><img src="https://avatars1.githubusercontent.com/u/30730368?v=4" width="100px;" alt=""/><br /><sub><b>Archithdwij</b></sub></a><br /><a href="https://github.com/Crio-Bytes/Database/pulls?q=is%3Apr+reviewed-by%3Aarchithdwij" title="Reviewed Pull Requests">👀</a> <a href="#eventOrganizing-archithdwij" title="Event Organizing">📋</a></td>
+    <td align="center"><a href="https://github.com/happycoder0011"><img src="https://avatars2.githubusercontent.com/u/62816994?v=4" width="100px;" alt=""/><br /><sub><b>happycoder0011</b></sub></a><br /><a href="https://github.com/Crio-Bytes/Database/commits?author=happycoder0011" title="Code">💻</a> <a href="#content-happycoder0011" title="Content">🖋</a> <a href="#ideas-happycoder0011" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/Crio-Bytes/Database/commits?author=happycoder0011" title="Documentation">📖</a></td>
   </tr>
 </table>
 

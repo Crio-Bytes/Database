@@ -118,11 +118,11 @@ The table has been created. Now, you can insert your data in your table.
 
 
 - To insert data in the table:
-<details><summary>Hint</summary>
+
 ```sh
 insert into student values("AC101","ROHAN","KUMAR",1,"Accountancy","2020-07-02");
 ```
-</details>
+
 
 
 - To insert values in selected columns:
@@ -347,7 +347,7 @@ What should be the order of writing the clause if you use all the clause at the 
 - https://www.ibm.com/cloud/learn/relational-databases
 - https://aws.amazon.com/relational-database/
 
-# Congratulations!! You have successfully completed the basics of MySQL byte.
+# Congratulations!! You have successfully completed the basics of MySQL microbyte.
 
 
 

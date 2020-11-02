@@ -16,9 +16,9 @@ I would be using MySQL command line client 8.0.
 You can download from https://dev.mysql.com/doc/refman/8.0/en/mysql.html .
 After doing the setup. You can access by entering your admin password.The console should look 
 
-
-<details><summary>Terminal Image</summary>
-![first](https://github.com/happycoder0011/Database/blob/happycoder0011/basics_of_MySQl/add/MySQL_basic_commands/Images/Screenshot%20(83).png)
+<details>
+  <summary>Terminal</summary>
+  ![first](https://github.com/happycoder0011/Database/blob/happycoder0011/basics_of_MySQl/add/MySQL_basic_commands/Images/Screenshot%20(83).png)
 </details>
 
 ## Activity - 0
@@ -85,20 +85,25 @@ create table table_name(Column_1 datatype_1,
                         Column_4 datatype_4,);
 ```
 
-
-<details><summary>Hint</summary>
-```sh
-create table student(Student_ID varchar(40), 
+<details>
+  <summary>Hint</summary>
+  
+  ```javascript
+   create table student(Student_ID varchar(40), 
                      First_Name varchar(40), 
                      Last_Name varchar(40), 
                      Course_ID int, 
                      Course_Name varchar(40), 
                      Admission_date date);
-```
-
+  ```
 </details>
 
+<<<<<<< HEAD:Basics of MySQL/README.md
 - To check your table has been created:
+=======
+
+To check your table has been created,
+>>>>>>> c17d17fab298ce3ea354b85d4fc4d14072396306:MySQL_basic_commands/README.md
 ```sh
 describe table_name;
 ```
@@ -112,6 +117,7 @@ show tables;
 **Insert values in table**
 The table has been created. Now, you can insert your data in your table.
 
+<<<<<<< HEAD:Basics of MySQL/README.md
 - To insert data in the table:
 <details><summary>Hint</summary>
 ```sh
@@ -121,13 +127,30 @@ insert into student values("AC101","ROHAN","KUMAR",1,"Accountancy","2020-07-02")
 
 
 - To insert values in selected columns:
+=======
+To insert data in the table
+
+<details>
+  <summary>Hint</summary>
+  
+  ```javascript
+   insert into student values("AC101","ROHAN","KUMAR",1,"Accountancy","2020-07-02");
+  ```
+</details>
+
+
+To insert values in selected columns
+
+>>>>>>> c17d17fab298ce3ea354b85d4fc4d14072396306:MySQL_basic_commands/README.md
 ```sh
  INSERT INTO table_name(column_1,column_2) VALUES("value_1","value_2");
 ```
-<details><summary>Hint</summary>
-```sh
- INSERT INTO STUDENT(First_name,Last_Name) VALUES("Karan","kashyap");
-```
+<details>
+  <summary>Hint</summary>
+  
+  ```javascript
+   INSERT INTO STUDENT(First_name,Last_Name) VALUES("Karan","kashyap");
+  ```
 </details>
 
 **View table**
@@ -142,10 +165,13 @@ select * from table_name;
 ```sh
 select column_1,column_2 from table_name;
 ```
-<details><summary>Hint</summary>
-```sh
-select student_id,first_name from student;
-```
+
+<details>
+  <summary>Hint</summary>
+  
+  ```javascript
+  select student_id,first_name from student;
+  ```
 </details>
 
 ## Activity - 1
@@ -181,10 +207,13 @@ The already inserted rows of data can also be modified using update table.
 ```sh
 update table_name set column_1 = value,column_2 = value where condition;
 ```
-<details><summary>Hint</summary>
-```sh
- update student set student_id = "AC102",Course_ID=2, Course_Name = "Biology" where first_name="karan";
-```
+
+<details>
+  <summary>Hint</summary>
+  
+  ```javascript
+  update student set student_id = "AC102",Course_ID=2, Course_Name = "Biology" where first_name="karan";
+  ```
 </details>
 
 **Note:** Where clause is used to identify the particular row/rows that will be updated with the column value.

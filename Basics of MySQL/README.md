@@ -18,7 +18,8 @@ After doing the setup. You can access by entering your admin password.The consol
 
 <details>
   <summary>Terminal</summary>
-  ![first](https://github.com/happycoder0011/Database/blob/happycoder0011/basics_of_MySQl/add/MySQL_basic_commands/Images/Screenshot%20(83).png)
+ 
+ ![first](https://github.com/happycoder0011/Database/blob/happycoder0011/basics_of_MySQl/add/Basics%20of%20MySQL/Images/Screenshot%20(83).png)
 </details>
 
 ## Activity - 0
@@ -31,16 +32,16 @@ The tables or the relations are held inside a database. So firstly you will have
 create database database_name;
 ```
 
-![second](https://github.com/happycoder0011/Database/blob/happycoder0011/basics_of_MySQl/add/MySQL_basic_commands/Images/Screenshot%20(84).png)
+![second](https://github.com/happycoder0011/Database/blob/happycoder0011/basics_of_MySQl/add/Basics%20of%20MySQL/Images/Screenshot%20(84).png)
 
 
-**Note:** MySQL is non case sensitive.
+> **Note:** MySQL is not case sensitive.
 - To view all the databases you have in your system:
 ```sh
 show databases;
 ```
 
-![third](https://github.com/happycoder0011/Database/blob/happycoder0011/basics_of_MySQl/add/MySQL_basic_commands/Images/Screenshot%20(85).png)
+![third](https://github.com/happycoder0011/Database/blob/happycoder0011/basics_of_MySQl/add/Basics%20of%20MySQL/Images/Screenshot%20(85).png)
 
 you will get a list of databases.
 
@@ -67,6 +68,7 @@ Lets say, student ID can be numeric or alpha numeric. The marks can be float or 
 Table in MySQL is created by mentioning the names of columns and metadata. For now lets just use the datatypes as metadata. We will be discussing more of it furthur. 
 - To create a student table with columns datatype:
 
+<center>
 
 | Columns  | Datatype|
 | --- | ---|
@@ -76,7 +78,7 @@ Table in MySQL is created by mentioning the names of columns and metadata. For n
 |Course_ID | Int |
 |Course_Name | Varchar(40) |
 |Admission_Date | date |
-
+</center>
 
 ```sh
 create table table_name(Column_1 datatype_1, 
@@ -98,16 +100,13 @@ create table table_name(Column_1 datatype_1,
   ```
 </details>
 
-<<<<<<< HEAD:Basics of MySQL/README.md
-- To check your table has been created:
-=======
 
-To check your table has been created,
->>>>>>> c17d17fab298ce3ea354b85d4fc4d14072396306:MySQL_basic_commands/README.md
+- To check your table has been created:
+
 ```sh
 describe table_name;
 ```
-![fifth](https://github.com/happycoder0011/Database/blob/happycoder0011/basics_of_MySQl/add/MySQL_basic_commands/Images/Screenshot%20(87).png)
+![fifth](https://github.com/happycoder0011/Database/blob/happycoder0011/basics_of_MySQl/add/Basics%20of%20MySQL/Images/Screenshot%20(87).png)
 
 - To view the list of all the tables in your database:
 ```sh
@@ -117,7 +116,7 @@ show tables;
 **Insert values in table**
 The table has been created. Now, you can insert your data in your table.
 
-<<<<<<< HEAD:Basics of MySQL/README.md
+
 - To insert data in the table:
 <details><summary>Hint</summary>
 ```sh
@@ -127,8 +126,7 @@ insert into student values("AC101","ROHAN","KUMAR",1,"Accountancy","2020-07-02")
 
 
 - To insert values in selected columns:
-=======
-To insert data in the table
+
 
 <details>
   <summary>Hint</summary>
@@ -141,7 +139,7 @@ To insert data in the table
 
 To insert values in selected columns
 
->>>>>>> c17d17fab298ce3ea354b85d4fc4d14072396306:MySQL_basic_commands/README.md
+
 ```sh
  INSERT INTO table_name(column_1,column_2) VALUES("value_1","value_2");
 ```
@@ -159,7 +157,7 @@ To insert values in selected columns
 ```sh
 select * from table_name;
 ```
-**Note:** "*" implies display all the columns.
+> **Note:** "*" implies display all the columns.
 
 - To view selective columns:
 ```sh
@@ -196,7 +194,7 @@ alter table table_name drop column column_1;
 ```
 ###### Change datatype of a column
 - To change datatype of already existing column:
-**Note:** Enter the modified datatype.
+> **Note:** Enter the modified datatype.
 ```sh
 alter table table_name modify column column_1 datatype_1;
 ```
@@ -216,7 +214,7 @@ update table_name set column_1 = value,column_2 = value where condition;
   ```
 </details>
 
-**Note:** Where clause is used to identify the particular row/rows that will be updated with the column value.
+> **Note:** Where clause is used to identify the particular row/rows that will be updated with the column value.
 
 
 ## Activity - 2
@@ -244,7 +242,7 @@ Where as the name suggests , is used to filter data according to given condition
 ```sh
 select * from table_name where course_name="accountancy";
 ```
-**Note-** The operators =,>=,<=,LIKE,IN, and BETWEEN can be used in where clause. The strings are compared in "". The numeric can be simply be (=10) without "".
+> **Note-** The operators =,>=,<=,LIKE,IN, and BETWEEN can be used in where clause. The strings are compared in "". The numeric can be simply be (=10) without "".
 
 Activity- Learn more about **LIKE** , **IN** , and **BETWEEN** .
 
@@ -268,7 +266,7 @@ Select * from student group by Student_ID;
 ```
 ### TOP
 There can be 100s of rows of data in your table. TOP allows you to view limited number of rows as the output, say it top 50 rows, 60 rows as result.
-**Note**: In MySQL we use the keyword "limit" and mention the number of rows to show the result.
+> **Note**: In MySQL we use the keyword "limit" and mention the number of rows to show the result.
 ```sh
 select * from student limit 5;
 ```

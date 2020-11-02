@@ -22,10 +22,11 @@ After doing the setup. You can access by entering your admin password.The consol
 </details>
 
 ## Activity - 0
+### Task -1 
 **Create Database**
 The tables or the relations are held inside a database. So firstly you will have to create a data base.
+- Create Database:
 
-Create Database
 ```sh
 create database database_name;
 ```
@@ -34,7 +35,7 @@ create database database_name;
 
 
 **Note:** MySQL is non case sensitive.
-To view all the databases you have in your system.
+- To view all the databases you have in your system:
 ```sh
 show databases;
 ```
@@ -42,13 +43,14 @@ show databases;
 ![third](https://github.com/happycoder0011/Database/blob/happycoder0011/basics_of_MySQl/add/MySQL_basic_commands/Images/Screenshot%20(85).png)
 
 you will get a list of databases.
-To use any of the databases and create tables inside it.
+
+- To use any of the databases and create tables inside it:
 ```sh
 use database_name;
 ```
-You will get a message - " Database Changed".
+You will get a message - **" Database Changed"**.
 Now you can start creating tables inside your database.
-
+### Task-2
 **Create Table**
 Now, You need to know that in a table there are two major components - 
 - **Data** - It is the values of different entities that you store in a table.For eg- In a students table, you will have data of different students such as rohan,nikhil etc.Their marks, class and other features in different rows.
@@ -63,7 +65,9 @@ In the students table, you may have columns such as student ID, name, course, ma
     
 Lets say, student ID can be numeric or alpha numeric. The marks can be float or int and so on.  
 Table in MySQL is created by mentioning the names of columns and metadata. For now lets just use the datatypes as metadata. We will be discussing more of it furthur. 
-To create a student table with columns datatype
+- To create a student table with columns datatype:
+
+
 | Columns  | Datatype|
 | --- | ---|
 |Student_ID | Varchar(20) |
@@ -72,6 +76,8 @@ To create a student table with columns datatype
 |Course_ID | Int |
 |Course_Name | Varchar(40) |
 |Admission_Date | date |
+
+
 ```sh
 create table table_name(Column_1 datatype_1, 
                         Column_2 datatype_2,
@@ -92,23 +98,21 @@ create table student(Student_ID varchar(40),
 
 </details>
 
-To check your table has been created,
+- To check your table has been created:
 ```sh
 describe table_name;
 ```
-
-![forth](https://github.com/happycoder0011/Database/blob/happycoder0011/basics_of_MySQl/add/MySQL_basic_commands/Images/Screenshot%20(86).png)
-
 ![fifth](https://github.com/happycoder0011/Database/blob/happycoder0011/basics_of_MySQl/add/MySQL_basic_commands/Images/Screenshot%20(87).png)
 
-To view the list of all the tables in your database.
+- To view the list of all the tables in your database:
 ```sh
 show tables;
 ```
+### Task-3
 **Insert values in table**
 The table has been created. Now, you can insert your data in your table.
 
-To insert data in the table
+- To insert data in the table:
 <details><summary>Hint</summary>
 ```sh
 insert into student values("AC101","ROHAN","KUMAR",1,"Accountancy","2020-07-02");
@@ -116,7 +120,7 @@ insert into student values("AC101","ROHAN","KUMAR",1,"Accountancy","2020-07-02")
 </details>
 
 
-To insert values in selected columns
+- To insert values in selected columns:
 ```sh
  INSERT INTO table_name(column_1,column_2) VALUES("value_1","value_2");
 ```
@@ -127,14 +131,14 @@ To insert values in selected columns
 </details>
 
 **View table**
-To check and view your table.
+- To check and view your table:
 
 ```sh
 select * from table_name;
 ```
 **Note:** "*" implies display all the columns.
 
-To view selective columns.
+- To view selective columns:
 ```sh
 select column_1,column_2 from table_name;
 ```
@@ -151,29 +155,29 @@ You learnt to create and insert values in your table. You can think of situation
 To change table configuration(column name, metadata) - **alter table**
 To change data in the database - **update table**
 
-
+### Task-1
 #### Alter Table
 
 ###### Add Column
-To add a new column
+- To add a new column:
 ```sh
 alter table table_name add column_1 datatype_1;
 ```
 ###### Delete Column
-To delete a column
+- To delete a column:
 ```sh
 alter table table_name drop column column_1;
 ```
 ###### Change datatype of a column
-To change datatype of already existing column.
+- To change datatype of already existing column:
 **Note:** Enter the modified datatype.
 ```sh
 alter table table_name modify column column_1 datatype_1;
 ```
-
+### Task-2
 #### Update Table
 The already inserted rows of data can also be modified using update table.
-General Syntax:
+- General Syntax:
 ```sh
 update table_name set column_1 = value,column_2 = value where condition;
 ```
@@ -188,7 +192,7 @@ update table_name set column_1 = value,column_2 = value where condition;
 
 ## Activity - 2
 
-Now, that you are well acquainted with tablecreation,update and insert commands. You can take the next step ahead. 
+Now, that you are well acquainted with table creation,update and insert commands. You can take the next step ahead. 
 SQL stands for **Structured Query Language** .Query is essential to learn as you wont be working with the whole data at a time. You need to be able to extract and evaluate data on the basis of conditions. 
 To understand this better, Take example of a students database in school. A teacher has marks database of around 600 students. They need to give away awards to the 90% above scorers. Now, think how difficult it would be to go through the whole table of marks and calculate the percentage indiviually and get the names of te students who scored above 90%.
 This task can be done effortlessly if you know how to make queries on given conditions.
@@ -203,9 +207,10 @@ There are 5 clause used in MySQL, namely:
 
 
 With this you will be completing the basics of MySQL.
-
-### WHERE
+### Task-1
+#### WHERE
 Where as the name suggests , is used to filter data according to given condition on columns. It can be where name = "albert" , marks>90 etc.
+- General Syntax:
 
 ```sh
 select * from table_name where course_name="accountancy";
@@ -239,7 +244,7 @@ There can be 100s of rows of data in your table. TOP allows you to view limited 
 select * from student limit 5;
 ```
 
-## Task - 1
+## Activity - 3
 
 - Create a database of your name.
 - Use or enter into **your_name** database.
@@ -257,7 +262,7 @@ select * from student limit 5;
 - Insert 4-5 rows of data.
 - View your table. [Hint: SELECT command]
 
-### Extra Bytes
+### Trivia
 
 - Learn about BLOB, SET and ENUM datatype.
 You will come across various kinds of data in real world. It is important to know about datatypes that are available to store the data of your preference. You can design you schema using these datatypes also along with the basic datatypes.
@@ -268,19 +273,19 @@ You will come across various kinds of data in real world. It is important to kno
 You can store date and time in many different formats.
     - https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html
 
-## Task - 2
+## Activity - 4
 - Add a new column to the course table named **"Stream"**.
 - Update the table by setting the stream as "commerce" for "accountancy" course.
 - Insert a new course name "History" with course ID = 101, Professor name - Mathew, and duration 6 months.
 - Update the table by setting the the duration of the last added row to 3 months and stream "arts".
 - Delete the stream column.
 
-## Extra Bytes
+## Trivia
 
 - Learn to use AND, OR and NOT operators. They can be combined with where clause.
 - Learn about LIKE, WILDCARDS AND IN.
 
-## Task - 3 
+## Activity - 5
 - Insert the dummy data:
 
 |Course_ID|Course_Name| Professor|Duration| Stream|
@@ -308,7 +313,7 @@ expected output-
 
 - Query the courses in ascending order by course_id.
 - Query the top 5 results order by stream in descending order.
-## Extra Bytes
+## Trivia
 What should be the order of writing the clause if you use all the clause at the same time? Find out.
 
 ## Extra Reads

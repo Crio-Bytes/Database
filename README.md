@@ -2,6 +2,8 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
+<a href="https://twitter.com/crio_do"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/crio_do?style=for-the-badge&color=09f&labelColor=black&logo=twitter&label=@crio_do"></a>
+
 # Introduction
 
 A database is a collection of [information](https://searchsqlserver.techtarget.com/definition/information) that is organised so that it can be easily accessed, managed and  updated. Computer databases typically contain aggregations of data  records or [files](https://searchsqlserver.techtarget.com/definition/flat-file), containing information about sales transactions or interactions with specific customers.

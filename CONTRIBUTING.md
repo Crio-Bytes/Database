@@ -106,7 +106,7 @@ $ git branch -D <branch-name>
 
 ## Deleting the branch in remote repository
 $ git push origin --delete <branch-name>
-```
+
 
 
 

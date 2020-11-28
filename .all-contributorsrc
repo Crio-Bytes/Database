@@ -59,6 +59,62 @@
         "maintenance",
         "review"
       ]
+    },
+    {
+      "login": "manishdasa100",
+      "name": "Manish Das",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/55842398?v=4",
+      "profile": "https://github.com/manishdasa100",
+      "contributions": [
+        "code",
+        "content",
+        "ideas",
+        "doc"
+      ]
+    },
+    {
+      "login": "Kevinpaulose05",
+      "name": "Kevin Paulose",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/64629493?v=4",
+      "profile": "https://kevinpaulose05.github.io/",
+      "contributions": [
+        "review",
+        "eventOrganizing"
+      ]
+    },
+    {
+      "login": "girishgr8",
+      "name": "Girish Thatte",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/43734717?v=4",
+      "profile": "https://www.linkedin.com/in/girish-thatte",
+      "contributions": [
+        "code",
+        "content",
+        "ideas",
+        "doc"
+      ]
+    },
+    {
+      "login": "archithdwij",
+      "name": "Archithdwij",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/30730368?v=4",
+      "profile": "https://github.com/archithdwij",
+      "contributions": [
+        "review",
+        "eventOrganizing"
+      ]
+    },
+    {
+      "login": "happycoder0011",
+      "name": "happycoder0011",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/62816994?v=4",
+      "profile": "https://github.com/happycoder0011",
+      "contributions": [
+        "code",
+        "content",
+        "ideas",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
